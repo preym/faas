@@ -3,32 +3,17 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-/**
- * Created with IntelliJ IDEA.
- * User: ehc
- * Date: 31/10/13
- * Time: 12:14 PM
- * To change this template use File | Settings | File Templates.
- */
-
 @Entity
 @Table(name = "Feedback")
 public class Feedback {
 
-    private int id;
+
     private String name;
     private String email;
-    private int phone;
+    private long phone;
     private String feedback_type;
     private String message;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -46,11 +31,11 @@ public class Feedback {
         this.email = email;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -69,4 +54,10 @@ public class Feedback {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
+    public String toString() {
+        return getName() + ", " + getEmail() + "," + getPhone() + ", " + getFeedback_type() + ", " + getMessage();
+    }
+
 }
