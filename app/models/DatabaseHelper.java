@@ -36,7 +36,7 @@ public class DatabaseHelper {
         }
     }
 
-    public static void getRecords() {
+    public static ArrayList<Feedback> getRecords() {
         ArrayList feedbacks = new ArrayList<Feedback>();
 
         try {
@@ -50,14 +50,18 @@ public class DatabaseHelper {
                 feedback.setMessage(resultSet.getString(5));
 
                 feedbacks.add(feedback);
+
             }
 
         } catch (SQLException e) {
             Logger.debug("Database Error while getting");
             e.printStackTrace();
+
+        } finally {
+            Logger.debug(feedbacks.toString());
+            return feedbacks;
         }
-        Logger.debug("Existing data");
-        Logger.debug(feedbacks.toString());
+//
     }
 
 

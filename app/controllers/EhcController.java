@@ -1,24 +1,17 @@
 package controllers;
 
+
+//import com.google.gson.*;
+
 import models.DatabaseHelper;
 import models.Feedback;
-import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.ehc;
-import views.html.index;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: ehc
- * Date: 31/10/13
- * Time: 9:44 AM
- * To change this template use File | Settings | File Templates.
- */
+
 public class EhcController extends Controller {
 
     private static Feedback feedback = new Feedback();
@@ -34,7 +27,8 @@ public class EhcController extends Controller {
 //        }
         populateFields();
         DatabaseHelper.insertRecord(feedback);
-        DatabaseHelper.getRecords();
+//        DatabaseHelper.getRecords();
+
         return ok(ehc.render());
     }
 
@@ -44,6 +38,14 @@ public class EhcController extends Controller {
         feedback.setPhone(Long.parseLong(request().getQueryString("phone")));
         feedback.setFeedback_type(request().getQueryString("feedback_type"));
         feedback.setMessage(request().getQueryString("message"));
+    }
+
+
+    public static Result get() {
+        ArrayList<Feedback> list = DatabaseHelper.getRecords();
+//        return ok(new Gson().toJson(list));
+        return ok(list.toString());
+
     }
 
 }

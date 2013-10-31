@@ -9,6 +9,12 @@ GET        /                    controllers.Application.index()
 GET        /assets/*file        controllers.Assets.at(path="/public", file)
 
 
-# EHC WEBSite
+# EHC insert
 
-GET      /ehc                   controllers.EhcController.index()
+GET        /feedback            controllers.EhcController.index()
+
+
+
+# EHC get
+
+GET        /feedback/get        controllers.EhcController.get()
