@@ -1,9 +1,9 @@
 package controllers;
 
 
-//import com.google.gson.*;
 import models.DatabaseHelper;
 import models.Feedback;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.ehc;
@@ -26,7 +26,6 @@ public class EhcController extends Controller {
 //        }
         populateFields();
         DatabaseHelper.insertRecord(feedback);
-//        DatabaseHelper.getRecords();
 
         return ok(ehc.render());
     }
@@ -42,9 +41,7 @@ public class EhcController extends Controller {
 
     public static Result get() {
         ArrayList<Feedback> list = DatabaseHelper.getRecords();
-//        return ok(new Gson().toJson(list));
-        return ok(list.toString());
-
+        return ok(Json.toJson(list));
     }
 
 }
