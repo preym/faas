@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+
+        <marquee>WELCOME TO EHC</marquee> <br> <br>
+        <h1>Please give your feedback</h1>
+        <br> <br>
+
+        <form name="feedback" action="feedback/insert" method="get">
+
+            <label>Name:</label> <input type="text" name="name" required="true"/> <br>
+            <label>E-mail:</label> <input type="text" name="email" required="true" /> <br>
+            <label>Mobile No:</label> <input type="number" name="phone" required="true" /> <br>
+            <label>Feedback Type:</label> <input type="text" name="feedback_type" required="true" /> <br>
+            <label>Message</label> <input type="text" name="message" required="true" multiple="true"/> <br> <br>
+            <input type="submit" name="submit" value="Post Feedback"/>
+
+        </form>
+
+    </body>
+</html>

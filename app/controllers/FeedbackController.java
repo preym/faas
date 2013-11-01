@@ -7,13 +7,14 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.ehc;
+import views.html.feedback;
 
 import java.util.ArrayList;
 
 
-public class EhcController extends Controller {
+public class FeedbackController extends Controller {
 
-    private static Feedback feedback = new Feedback();
+    private static Feedback feedbackDTO = new Feedback();
 
 
     public static Result index() {
@@ -25,23 +26,28 @@ public class EhcController extends Controller {
 //            Logger.debug(key + " " + value);
 //        }
         populateFields();
-        DatabaseHelper.insertRecord(feedback);
+        DatabaseHelper.insertRecord(feedbackDTO);
 
         return ok(ehc.render());
     }
 
     private static void populateFields() {
-        feedback.setName(request().getQueryString("name"));
-        feedback.setEmail(request().getQueryString("email"));
-        feedback.setPhone(Long.parseLong(request().getQueryString("phone")));
-        feedback.setFeedback_type(request().getQueryString("feedback_type"));
-        feedback.setMessage(request().getQueryString("message"));
+        feedbackDTO.setName(request().getQueryString("name"));
+        feedbackDTO.setEmail(request().getQueryString("email"));
+        feedbackDTO.setPhone(Long.parseLong(request().getQueryString("phone")));
+        feedbackDTO.setFeedback_type(request().getQueryString("feedback_type"));
+        feedbackDTO.setMessage(request().getQueryString("message"));
     }
 
 
     public static Result get() {
         ArrayList<Feedback> list = DatabaseHelper.getRecords();
         return ok(Json.toJson(list));
+    }
+
+
+    public static Result form() {
+        return ok(feedback.render());
     }
 
 }
