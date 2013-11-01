@@ -48,9 +48,7 @@ public class DatabaseHelper {
                 feedback.setPhone(resultSet.getLong(3));
                 feedback.setFeedback_type(resultSet.getString(4));
                 feedback.setMessage(resultSet.getString(5));
-
                 feedbacks.add(feedback);
-
             }
 
         } catch (SQLException e) {
@@ -61,7 +59,6 @@ public class DatabaseHelper {
             Logger.debug(feedbacks.toString());
             return feedbacks;
         }
-//
     }
 
 
